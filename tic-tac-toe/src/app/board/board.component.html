@@ -1,0 +1,16 @@
+<h1>Current Player:{{player}}</h1>
+<button (click)="newGame()">Start a new Game</button>
+<div class="banner"
+[ngStyle]="{'background-color': winner === 'X' ? '#FCD299' : 
+                      winner === 'O' ? '#Ffb6d3' : 'white'}"
+   *ngIf="winner">
+<p 
+>The Winner is {{winner}}
+</p>
+<p>A New Game Starts in 5 seconds!!</p>
+</div>
+
+<main>
+    <app-square *ngFor="let square of squares;let i=index"[value]='square'(click)='makeMove(i)'[gameOver]='winner'>
+    </app-square>
+</main>
